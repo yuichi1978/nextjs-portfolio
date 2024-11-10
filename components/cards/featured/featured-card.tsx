@@ -3,7 +3,6 @@ import Header from "./header";
 import Video from "./video";
 
 interface FeaturedCardProps {
-  logo?: ReactNode;
   title: string;
   tag: string;
   video: string;
@@ -11,7 +10,6 @@ interface FeaturedCardProps {
 }
 
 const FeaturedCard: FC<FeaturedCardProps> = ({
-  logo,
   title,
   tag,
   video,
