@@ -3,8 +3,8 @@ import { Bricolage_Grotesque, Oswald } from "next/font/google";
 import { cn } from "@/lib/utils";
 // import localFont from "next/font/local";
 import GrainEffect from "@/components/visualEffects/grain-effect";
-import "./globals.css";
 import Cursor from "@/components/cursor/cursor";
+import "./globals.css";
 
 // Fonts
 const MainFont = Bricolage_Grotesque({ subsets: ["latin"], weight: ["600"] });

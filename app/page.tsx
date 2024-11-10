@@ -1,7 +1,10 @@
 "use client";
 
 import WaterWaveWrapper from "@/components/visualEffects/water-wave-wrapper";
-import Card from "@/components/ui/card";
+import FeaturedSection from "@/sections/featured";
+import LandingSection from "@/sections/landing";
+import AboutSection from "@/sections/about";
+import ContactSection from "@/sections/contact";
 
 export default function Home() {
   return (
@@ -11,14 +14,14 @@ export default function Home() {
       perturbance={3}
       resolution={2048}
     >
-      (
-        <div className="w-full p-20">
-          <div className="max-w-2xl mx-auto">
-          <Card title="Ui Components">...</Card>
-
-          </div>
+      {() => (
+        <div className="pb-8">
+          <LandingSection />
+          <FeaturedSection />
+          <AboutSection />
+        <ContactSection />
         </div>
-      )
+      )}
     </WaterWaveWrapper>
   );
 }
