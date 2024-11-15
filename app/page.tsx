@@ -14,14 +14,12 @@ export default function Home() {
       perturbance={3}
       resolution={2048}
     >
-      {() => (
-        <div className="pb-8">
-          <LandingSection />
-          <FeaturedSection />
-          <AboutSection />
-          <ContactSection />
-        </div>
-      )}
+      <div className="pb-8">
+        <LandingSection />
+        <FeaturedSection />
+        <AboutSection />
+        <ContactSection />
+      </div>
     </WaterWaveWrapper>
   );
 }
