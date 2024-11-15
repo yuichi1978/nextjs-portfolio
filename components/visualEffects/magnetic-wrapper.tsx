@@ -12,16 +12,19 @@ interface MagneticWrapperProps {
 const MagneticWrapper: FC<MagneticWrapperProps> = ({ className, children }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const handleMouse = (e: MouseEvent) => {
+
+  // MouseEvent を HTMLDivElement 用の MouseEvent にキャストする
+  const handleMouse = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const { clientX, clientY } = e;
     const boundingRect = ref.current?.getBoundingClientRect();
     if (boundingRect) {
       const { width, height, top, left } = boundingRect;
       const middleX = clientX - (left + width / 2);
       const middleY = clientY - (top + height / 2);
-      setPosition({x:middleX, y:middleY})
+      setPosition({ x: middleX, y: middleY });
     }
   };
+
   const reset = () => {
     setPosition({ x: 0, y: 0 });
   };
