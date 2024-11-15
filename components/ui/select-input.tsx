@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { FaBullseye } from "react-icons/fa";
 
 interface SelectInputProps {
   type: "checkbox" | "radio";

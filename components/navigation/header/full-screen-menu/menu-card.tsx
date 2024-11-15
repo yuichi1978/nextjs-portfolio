@@ -1,5 +1,4 @@
 import { HeadingAnimatedSvg } from "@/components/heading/heading-animated-svg";
-import Image from "next/image";
 import Link from "next/link";
 // import ShadeImg from "@/public/assets/images/background/card-shade.png";
 

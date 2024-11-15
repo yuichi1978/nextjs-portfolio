@@ -6,12 +6,22 @@ export default function SvgCurve() {
   let progress = 0;
   let reqId: number | null = null; // Specify the type for reqId
   let x = 0.5;
-  let time = Math.PI / 2;
+
+  // setPath 関数は一番上に移動します
+  const setPath = (value: number) => {
+    const width = window.innerWidth * 0.7;
+
+    path.current?.setAttributeNS(
+      null,
+      "d",
+      `M 0 50 Q ${width * x} ${50 + value} ${width} 50`
+    );
+  };
+
   const animateIn = () => {
     // If the animationOut is running, cancel it and reset time
     if (reqId !== null) {
-      cancelAnimationFrame(reqId);
-      time = Math.PI / 2;
+      cancelAnimationFrame(reqId); // reqIdがnullでないことを確認してから呼び出す
     }
 
     setPath(progress);
@@ -31,7 +41,9 @@ export default function SvgCurve() {
   };
 
   const resetAnimation = () => {
-    cancelAnimationFrame(reqId) as unknown | number | null;
+    if (reqId !== null) {
+      cancelAnimationFrame(reqId); // reqIdがnullでないことを確認してから呼び出す
+    }
 
     animateOut();
   };
@@ -39,22 +51,11 @@ export default function SvgCurve() {
   const lerp = (x: number, y: number, a: number) => x * (1 - a) + y * a;
 
   const animateOut = () => {
-    // let newProgress = progress * Math.sin(time);
-
-    // setPath(newProgress);
-
     progress = lerp(progress, 0, 0.04);
-
-    time += 0.2;
 
     if (Math.abs(progress) > 0.5) {
       reqId = requestAnimationFrame(animateOut);
-    }
-
-    // If the slope is almost flat, we stop the animation
-    else {
-      time = Math.PI / 2;
-
+    } else {
       progress = 0;
     }
   };
@@ -72,20 +73,8 @@ export default function SvgCurve() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [progress]);
+  }, [progress]); // setPath は依存リストに追加しなくても良い（関数は常に安定）
 
-  const setPath = (value: number) => {
-    const width = window.innerWidth * 0.7;
-
-    path.current?.setAttributeNS(
-      null,
-      "d",
-      `M 0 50 Q ${width * x} ${50 + value} ${width} 50`
-    );
-  };
-  /*
-
-*/
   return (
     <div className="line">
       <span
@@ -101,7 +90,6 @@ export default function SvgCurve() {
         className="box"
       ></span>
       <svg>
-        {/* Use optional chaining to handle the null case */}
         <path ref={path}></path>
       </svg>
     </div>
