@@ -62,7 +62,7 @@ export default function LandingSection() {
           </div>
         </div>
         {/* Magnetic scroll down */ }
-        <MagneticWrapper className="absolute left-1/2 -translate-x-1/2 bottom-[8rem] md:bottom-[4rem] 2xl:-bottom-10">
+        <MagneticWrapper className="absolute left-1/2 -translate-x-1/2  bottom-[11rem] sm:bottom-[10rem] md:bottom-[1rem] 2xl:-bottom-10">
           <ScrollDown />
         </MagneticWrapper>
       </div>

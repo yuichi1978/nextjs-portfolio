@@ -3,9 +3,10 @@ import { FC, ReactNode } from "react";
 interface InputProps {
   icon?: ReactNode;
   placeholder: string;
+  name: string;
 }
 
-const TextArea: FC<InputProps> = ({ icon, placeholder }) => {
+const TextArea: FC<InputProps> = ({ icon, placeholder, name }) => {
   return (
     <div className="relative w-full">
       {/* Icon */}
@@ -17,6 +18,7 @@ const TextArea: FC<InputProps> = ({ icon, placeholder }) => {
         {icon}
       </div>
       <textarea
+        name={name}
         placeholder={placeholder}
         className="
         bg-primary-background text-primary-foreground rounded-lg 

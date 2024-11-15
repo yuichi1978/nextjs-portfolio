@@ -19,7 +19,7 @@ export default function Home() {
           <LandingSection />
           <FeaturedSection />
           <AboutSection />
-        <ContactSection />
+          <ContactSection />
         </div>
       )}
     </WaterWaveWrapper>
